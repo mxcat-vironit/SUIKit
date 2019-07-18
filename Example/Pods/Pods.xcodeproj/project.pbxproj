@@ -16,8 +16,8 @@
 		87CA712605FD297A36CDCC2EB1037EAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		9376F7F809F8EA0A7A27F3958150809A /* Pods-SUIKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 697B1BF46CC53319ACA0409ECE09371A /* Pods-SUIKit_Tests-dummy.m */; };
 		997F499A57B2A671B8D6568028E199A4 /* SUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC70A68585A6ED5BAE2C2880DA4CBFE /* SUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7DFCDF422E07BFB009055AC /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D7DFCDF122E07BFB009055AC /* .gitkeep */; };
 		D7DFCDF522E07BFB009055AC /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D7DFCDF322E07BFB009055AC /* .gitkeep */; };
+		D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +64,8 @@
 		BA62C36B2F57C40BA0820BAD0AD34AB7 /* SUIKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SUIKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BC405654B0B96D5C6A82116471B5EA55 /* Pods-SUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DFDE1620B959D827BB6670785C5F27 /* Pods-SUIKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SUIKit_Tests-Info.plist"; sourceTree = "<group>"; };
-		D7DFCDF122E07BFB009055AC /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		D7DFCDF322E07BFB009055AC /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CACornerMask+Extension.swift"; sourceTree = "<group>"; };
 		DA08D4E00DA3478B85FCB8D21D82FC84 /* Pods-SUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SUIKit_Tests.modulemap"; sourceTree = "<group>"; };
 		DE5A99694D00801305434475DBC9AAAF /* Pods-SUIKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SUIKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F124DE5E611DFB69750024DF6D0B6CB5 /* Pods-SUIKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SUIKit_Example-dummy.m"; sourceTree = "<group>"; };
@@ -211,18 +211,9 @@
 			isa = PBXGroup;
 			children = (
 				D7DFCDF222E07BFB009055AC /* Assets */,
-				D7DFCDF622E07C03009055AC /* Extesions */,
-				D7DFCDF022E07BFB009055AC /* Classes */,
+				D7DFCDF622E07C03009055AC /* Extensions */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		D7DFCDF022E07BFB009055AC /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D7DFCDF122E07BFB009055AC /* .gitkeep */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		D7DFCDF222E07BFB009055AC /* Assets */ = {
@@ -233,11 +224,12 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		D7DFCDF622E07C03009055AC /* Extesions */ = {
+		D7DFCDF622E07C03009055AC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */,
 			);
-			path = Extesions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F5290C19DB9F6182A081B882175DFCC4 /* Pods-SUIKit_Tests */ = {
@@ -389,7 +381,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7DFCDF422E07BFB009055AC /* .gitkeep in Resources */,
 				D7DFCDF522E07BFB009055AC /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */,
 				64C7329BF5212866F29DC0C5653ABCAB /* SUIKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
