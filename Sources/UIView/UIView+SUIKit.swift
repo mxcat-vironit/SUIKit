@@ -17,7 +17,7 @@ public extension UIView {
     
     convenience init(content: () -> UIView) {
         self.init()
-        appendSubview(content)
+        place(content: content)
     }
     
 }
@@ -34,6 +34,16 @@ public extension UIView {
     @objc func modify(_ modification: (UIView)->Void) -> Self {
         modification(self)
         return self
+    }
+    
+    @discardableResult
+    func hide() -> Self {
+        modify{ $0.isHidden = true }
+    }
+    
+    @discardableResult
+    func show() -> Self {
+        modify{ $0.isHidden = false }
     }
     
 }
@@ -176,6 +186,31 @@ public extension UIView {
     
 }
 
+// MARK: - Center
+public extension UIView {
+    
+    @discardableResult
+    func center(x: Int, y: Int) -> Self {
+        center(.init(x: x, y: y))
+    }
+    
+    @discardableResult
+    func center(x: Double, y: Double) -> Self {
+        center(.init(x: x, y: y))
+    }
+    
+    @discardableResult
+    func center(x: CGFloat, y: CGFloat) -> Self {
+        center(.init(x: x, y: y))
+    }
+    
+    @discardableResult
+    func center(_ point: CGPoint) -> Self {
+        modify { $0.center = point }
+    }
+    
+}
+
 // MARK: - Gesture recognizers
 public extension UIView {
     
@@ -220,65 +255,70 @@ public extension UIView {
 public extension UIView {
     
     @discardableResult
-    func appendSubview(_ content: ()->UIView) -> Self {
-        appendSubview(content())
+    func place(content: ()->UIView) -> Self {
+        place(view: content())
     }
     
     @discardableResult
-    func appendSubview(_ content: ()->UIView, at index: Int) -> Self {
-        appendSubview(content(), at: index)
+    func place(content: ()->UIView, at index: Int) -> Self {
+        place(view: content(), at: index)
     }
     
     @discardableResult
-    func appendSubview(_ content: ()->UIView, above subview: UIView) -> Self {
-        appendSubview(content(), above: subview)
+    func place(content: ()->UIView, above subview: UIView) -> Self {
+        place(view: content(), above: subview)
     }
     
     @discardableResult
-    func appendSubview(_ content: ()->UIView, below subview: UIView) -> Self {
-        appendSubview(content(), below: subview)
+    func place(content: ()->UIView, below subview: UIView) -> Self {
+        place(view: content(), below: subview)
     }
     
     @discardableResult
-    func appendSubview(_ view: UIView) -> Self {
+    func place(view: UIView) -> Self {
         modify { $0.addSubview(view) }
     }
     
     @discardableResult
-    func appendSubview(_ view: UIView, at index: Int) -> Self {
+    func place(view: UIView, at index: Int) -> Self {
         modify { $0.insertSubview(view, at: index) }
     }
     
     @discardableResult
-    func appendSubview(_ view: UIView, above subview: UIView) -> Self {
+    func place(view: UIView, above subview: UIView) -> Self {
         modify { $0.insertSubview(view, aboveSubview: subview) }
     }
     
     @discardableResult
-    func appendSubview(_ view: UIView, below subview: UIView) -> Self {
+    func place(view: UIView, below subview: UIView) -> Self {
         modify { $0.insertSubview(view, belowSubview: subview) }
     }
     
     @discardableResult
-    func removeSubview(_ view: UIView) -> Self {
+    func remove(view: UIView) -> Self {
         modify { if $0 === view.superview { view.removeFromSuperview() }}
     }
     
     @discardableResult
-    func removeSubview(below view: UIView) -> Self {
+    func removeView(below view: UIView) -> Self {
         guard let index = subviews.firstIndex(where: { $0 === view }) else { return self }
-        return removeSubview(at: index - 1)
+        return removeView(at: index - 1)
     }
     
     @discardableResult
-    func removeSubview(above view: UIView) -> Self {
+    func removeView(above view: UIView) -> Self {
         guard let index = subviews.firstIndex(where: { $0 === view }) else { return self }
-        return removeSubview(at: index + 1)
+        return removeView(at: index + 1)
     }
     
     @discardableResult
-    func removeSubview(at index: Int) -> Self {
+    func removeView(at index: Int) -> Self {
         modify { $0.subviews[safe: index]?.removeFromSuperview() }
+    }
+    
+    @discardableResult
+    func removeSubviews() -> Self {
+        modify { $0.subviews.forEach{ $0.removeFromSuperview() } }
     }
     
 }

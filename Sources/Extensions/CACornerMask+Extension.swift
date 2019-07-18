@@ -39,7 +39,7 @@ public extension Set where Element == CACornerMask.Corner {
     
     static var top: Set<Element> { [.topLeft, .topRight] }
     
-    static var bottom: Set<Element> { [.bottomLeft, .bottomRight]}
+    static var bottom: Set<Element> { [.bottomLeft, .bottomRight] }
     
     static var left: Set<Element> { [.topLeft, .bottomLeft] }
     
@@ -57,9 +57,9 @@ public extension Set where Element == CACornerMask.Corner {
     
     static func mask(_ corners: Set<Element>) -> CACornerMask { corners.makeCornerMask }
     
-    static func excluding(_ corners: Element...) -> CACornerMask { excluding(Set(corners)) }
+    static func excluding(_ corners: Element...) -> Set<Element> { excluding(Set(corners)) }
     
-    static func excluding(_ corners: Set<Element>) -> CACornerMask { all.filter{ !corners.contains($0) }.makeCornerMask }
+    static func excluding(_ corners: Set<Element>) -> Set<Element> { all.filter{ !corners.contains($0) }}
     
 }
 

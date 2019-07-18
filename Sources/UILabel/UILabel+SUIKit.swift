@@ -12,7 +12,7 @@ public extension UILabel {
     
     convenience init(text: String? = nil, alignment: NSTextAlignment = .left, color: UIColor = .black, content: () -> UIView) {
         self.init(text: text, alignment: alignment, color: color)
-        appendSubview(content)
+        place(content: content)
     }
     
     convenience init(text: String?, alignment: NSTextAlignment = .left, color: UIColor = .black) {
@@ -77,7 +77,7 @@ public extension UILabel {
     }
     
     @discardableResult
-    func font(systemOfSize size: CGFloat, andWeight weight: UIFont.Weight = .regular) -> Self {
+    func font(size: CGFloat, _ weight: UIFont.Weight = .regular) -> Self {
         self.font(UIFont.systemFont(ofSize: size, weight: weight))
     }
     
