@@ -46,7 +46,7 @@ public extension UIView {
     ///
     /// Use it to modify caller instance.
     ///
-    /// Override this method in custom UIView classes with your class modification parameter:
+    /// Override this method in custom UIView subclasses with your class modification parameter:
     ///
     /// ```(Class)->Void```
     ///

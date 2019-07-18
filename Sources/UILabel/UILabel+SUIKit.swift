@@ -10,11 +10,26 @@ import UIKit
 // MARK: - Init
 public extension UILabel {
     
+    /// Initializes and returns a newly allocated label object with specified text, textAlignment, textColor and added subviews.
+    ///
+    /// The new view object must be inserted into the view hierarchy of a window before it can be used.
+    ///
+    /// - Parameter text: text of the label.
+    /// - Parameter alignment: text alignment of the label.
+    /// - Parameter color: text color of the label.
+    /// - Parameter content: Closure, that specifies subviews to be added to the view hierarcy after initialization.
     convenience init(text: String? = nil, alignment: NSTextAlignment = .left, color: UIColor = .black, content: () -> UIView) {
         self.init(text: text, alignment: alignment, color: color)
         place(content: content)
     }
     
+    /// Initializes and returns a newly allocated label object with specified text, textAlignment, and color.
+    ///
+    /// The new view object must be inserted into the view hierarchy of a window before it can be used.
+    ///
+    /// - Parameter text: text of the label.
+    /// - Parameter alignment: text alignment of the label.
+    /// - Parameter color: text color of the label.
     convenience init(text: String?, alignment: NSTextAlignment = .left, color: UIColor = .black) {
         self.init()
         self.text(text)
@@ -27,6 +42,18 @@ public extension UILabel {
 // MARK: - Other
 public extension UILabel {
     
+    /// Provides a closure with the caller instance as a parameter.
+    ///
+    /// Use it to modify caller instance.
+    ///
+    /// Override this method in custom UILabel subclasses with your class modification parameter:
+    ///
+    /// ```(Class)->Void```
+    ///
+    /// to provide more convinient API.
+    ///
+    /// - Parameter modification: Closure that takes the caller instance as a parameter,
+    /// - Returns: Caller instance.
     @discardableResult
     override func modify(_ modification: (UILabel)->Void) -> Self {
         modification(self)
