@@ -9,34 +9,21 @@
 Pod::Spec.new do |s|
   s.name             = 'SUIKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SUIKit.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Declarative UI framework'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Declarative UI framework, based on UIKit.
+  Keywords: UIKit, Foundation, SwiftUI, Interface, Declarative, UI, Swift, Cocoapods.
                        DESC
 
   s.homepage         = 'https://github.com/mx-Cat/SUIKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'mx-Cat' => 'maximkrouk@gmail.com' }
+  s.author           = { 'mx-Cat' => 'id.maximkrouk@gmail.com' }
   s.source           = { :git => 'https://github.com/mx-Cat/SUIKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/mxcat_'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SUIKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SUIKit' => ['SUIKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = 'Sources/**/*'
+  s.frameworks = 'UIKit', 'Foundation'
 end
