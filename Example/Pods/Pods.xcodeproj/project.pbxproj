@@ -19,6 +19,7 @@
 		D7DFCDF522E07BFB009055AC /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D7DFCDF322E07BFB009055AC /* .gitkeep */; };
 		D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */; };
 		D7DFCE0622E08246009055AC /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCE0022E08152009055AC /* Collection+Extension.swift */; };
+		D7DFCE0922E08292009055AC /* UIView+SUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCE0822E08292009055AC /* UIView+SUIKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		D7DFCDF322E07BFB009055AC /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CACornerMask+Extension.swift"; sourceTree = "<group>"; };
 		D7DFCE0022E08152009055AC /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		D7DFCE0822E08292009055AC /* UIView+SUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SUIKit.swift"; sourceTree = "<group>"; };
 		DA08D4E00DA3478B85FCB8D21D82FC84 /* Pods-SUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SUIKit_Tests.modulemap"; sourceTree = "<group>"; };
 		DE5A99694D00801305434475DBC9AAAF /* Pods-SUIKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SUIKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F124DE5E611DFB69750024DF6D0B6CB5 /* Pods-SUIKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SUIKit_Example-dummy.m"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				D7DFCDF222E07BFB009055AC /* Assets */,
 				D7DFCDF622E07C03009055AC /* Extensions */,
+				D7DFCE0722E08292009055AC /* UIView */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -233,6 +236,14 @@
 				D7DFCE0022E08152009055AC /* Collection+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D7DFCE0722E08292009055AC /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				D7DFCE0822E08292009055AC /* UIView+SUIKit.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		F5290C19DB9F6182A081B882175DFCC4 /* Pods-SUIKit_Tests */ = {
@@ -411,6 +422,7 @@
 				D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */,
 				D7DFCE0622E08246009055AC /* Collection+Extension.swift in Sources */,
 				64C7329BF5212866F29DC0C5653ABCAB /* SUIKit-dummy.m in Sources */,
+				D7DFCE0922E08292009055AC /* UIView+SUIKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
