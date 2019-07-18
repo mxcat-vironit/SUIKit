@@ -15,6 +15,11 @@ import UIKit
 //MARK: - Init
 public extension UIView {
     
+    /// Initializes and returns a newly allocated view object with specified subviews added.
+    ///
+    /// The new view object must be inserted into the view hierarchy of a window before it can be used.
+    ///
+    /// - Parameter content: Closure, that specifies subviews to be added to the view hierarcy after initialization.
     convenience init(content: () -> UIView) {
         self.init()
         place(content: content)
@@ -25,22 +30,49 @@ public extension UIView {
 //MARK: - Other
 public extension UIView {
     
+    /// Links the outer variable to the caller instance.
+    ///
+    /// Does nothing if caller instance is not castable to a variable type,
+    /// otherwise erases outer variable and places the caller instance address into it.
+    ///
+    /// - Parameter ref: Outer variable, that will be linked to the caller instance.
+    /// - Returns: Caller instance.
     @discardableResult
-    func link<T: UIView>(to view: inout T?) -> Self {
-        modify{ if let self = $0 as? T { view = self }}
+    func link<T: UIView>(to ref: inout T?) -> Self {
+        modify{ if let self = $0 as? T { ref = self }}
     }
     
+    /// Provides a closure with the caller instance as a parameter.
+    ///
+    /// Use it to modify caller instance.
+    ///
+    /// Override this method in custom UIView classes with your class modification parameter:
+    ///
+    /// ```(Class)->Void```
+    ///
+    /// to provide more convinient API.
+    ///
+    /// - Parameter modification: Closure that takes the caller instance as a parameter,
+    /// - Returns: Caller instance.
     @discardableResult
     @objc func modify(_ modification: (UIView)->Void) -> Self {
         modification(self)
         return self
     }
     
+    /// Hides the caller instance.
+    ///
+    /// The same as `.isHidden = true`, but fits SUIKit's chainable API
+    /// - Returns: Caller instance.
     @discardableResult
     func hide() -> Self {
         modify{ $0.isHidden = true }
     }
     
+    /// Shows the caller instance.
+    ///
+    /// The same as `.isHidden = false`, but fits SUIKit's chainable API
+    /// - Returns: Caller instance.
     @discardableResult
     func show() -> Self {
         modify{ $0.isHidden = false }
@@ -51,16 +83,28 @@ public extension UIView {
 // MARK: - Colors
 public extension UIView {
     
+    /// Sets the opacity of the caller instance by changing it's alpha value.
+    ///
+    /// - Parameter value: New alpha value of the caller instance.
+    /// - Returns: Caller instance.
     @discardableResult
     func alpha(_ value: CGFloat) -> Self {
         modify { $0.alpha = value }
     }
     
+    /// Sets the background color of the caller instance.
+    ///
+    /// - Parameter color: New backgroundColor of the caller instance.
+    /// - Returns: Caller instance.
     @discardableResult
     func background(color: UIColor?) -> Self {
         modify { $0.backgroundColor = color }
     }
     
+    /// Sets the tint color of the caller instance.
+    ///
+    /// - Parameter color: New tintColor of the caller instance.
+    /// - Returns: Caller instance.
     @discardableResult
     func tint(color: UIColor) -> Self {
         modify { $0.tintColor = color }
