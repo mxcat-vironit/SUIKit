@@ -1,0 +1,6 @@
+framework module SUIKit {
+  umbrella header "SUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
