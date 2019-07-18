@@ -85,7 +85,7 @@ public extension UIView {
     
     /// Sets the opacity of the caller instance by changing it's alpha value.
     ///
-    /// - Parameter value: New alpha value of the caller instance.
+    /// - Parameter value: A new alpha value of the caller instance.
     /// - Returns: Caller instance.
     @discardableResult
     func alpha(_ value: CGFloat) -> Self {
@@ -94,7 +94,7 @@ public extension UIView {
     
     /// Sets the background color of the caller instance.
     ///
-    /// - Parameter color: New backgroundColor of the caller instance.
+    /// - Parameter color: A new backgroundColor of the caller instance.
     /// - Returns: Caller instance.
     @discardableResult
     func background(color: UIColor?) -> Self {
@@ -103,7 +103,7 @@ public extension UIView {
     
     /// Sets the tint color of the caller instance.
     ///
-    /// - Parameter color: New tintColor of the caller instance.
+    /// - Parameter color: A new tintColor of the caller instance.
     /// - Returns: Caller instance.
     @discardableResult
     func tint(color: UIColor) -> Self {
@@ -115,11 +115,19 @@ public extension UIView {
 // MARK: - Corners
 public extension UIView {
     
+    /// Sets the corner radius of the view by masking specified corners.
+    ///
+    /// - Parameter value: A new cornerRadius of the caller instance's layer.
+    /// - Parameter corners: Set of corners to create a new maskedCorners value of the caller instance's layer.
     @discardableResult
     func cornerRadius(_ value: CGFloat, corners: CACornerMask.Corner...) -> Self {
         cornerRadius(value, corners: Set(corners))
     }
     
+    /// Sets the corner radius of the view by masking specified corners.
+    ///
+    /// - Parameter value: A new cornerRadius of the caller instance's layer.
+    /// - Parameter corners: Set of corners to create a new maskedCorners value of the caller instance's layer. (`.all` by default)
     @discardableResult
     func cornerRadius(_ value: CGFloat, corners: CACornerMask.Corners = .all) -> Self {
         modify {
