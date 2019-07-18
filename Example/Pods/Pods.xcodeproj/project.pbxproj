@@ -18,7 +18,7 @@
 		997F499A57B2A671B8D6568028E199A4 /* SUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC70A68585A6ED5BAE2C2880DA4CBFE /* SUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7DFCDF522E07BFB009055AC /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D7DFCDF322E07BFB009055AC /* .gitkeep */; };
 		D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */; };
-		D7DFCE0122E08152009055AC /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCE0022E08152009055AC /* Collection+Extension.swift */; };
+		D7DFCE0622E08246009055AC /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCE0022E08152009055AC /* Collection+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,7 +401,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BFC7D89450726BA3B47C7143A8C59E2 /* Pods-SUIKit_Example-dummy.m in Sources */,
-				D7DFCE0122E08152009055AC /* Collection+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */,
+				D7DFCE0622E08246009055AC /* Collection+Extension.swift in Sources */,
 				64C7329BF5212866F29DC0C5653ABCAB /* SUIKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
