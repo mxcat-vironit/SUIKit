@@ -18,6 +18,7 @@
 		997F499A57B2A671B8D6568028E199A4 /* SUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC70A68585A6ED5BAE2C2880DA4CBFE /* SUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7DFCDF522E07BFB009055AC /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D7DFCDF322E07BFB009055AC /* .gitkeep */; };
 		D7DFCDFC22E07F79009055AC /* CACornerMask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */; };
+		D7DFCE0122E08152009055AC /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFCE0022E08152009055AC /* Collection+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		C9DFDE1620B959D827BB6670785C5F27 /* Pods-SUIKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SUIKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		D7DFCDF322E07BFB009055AC /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CACornerMask+Extension.swift"; sourceTree = "<group>"; };
+		D7DFCE0022E08152009055AC /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		DA08D4E00DA3478B85FCB8D21D82FC84 /* Pods-SUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SUIKit_Tests.modulemap"; sourceTree = "<group>"; };
 		DE5A99694D00801305434475DBC9AAAF /* Pods-SUIKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SUIKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F124DE5E611DFB69750024DF6D0B6CB5 /* Pods-SUIKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SUIKit_Example-dummy.m"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				D7DFCDFA22E07F79009055AC /* CACornerMask+Extension.swift */,
+				D7DFCE0022E08152009055AC /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +345,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					A2DA0BE14F67556B4F9E61BC922AD6E6 = {
+						LastSwiftMigration = 1100;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -393,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BFC7D89450726BA3B47C7143A8C59E2 /* Pods-SUIKit_Example-dummy.m in Sources */,
+				D7DFCE0122E08152009055AC /* Collection+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +445,7 @@
 			baseConfigurationReference = AC956BE9BBDBDD77189AD4DD619B571F /* Pods-SUIKit_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -458,6 +468,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -723,6 +734,7 @@
 			baseConfigurationReference = BC405654B0B96D5C6A82116471B5EA55 /* Pods-SUIKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -745,6 +757,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
