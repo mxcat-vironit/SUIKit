@@ -1,34 +1,21 @@
 //
-//  UIView+SUIKit.swift
-//  Pods
+//  File.swift
+//  Pods-SUIKit_Example
 //
-//  Created by Maxim on 7/17/19.
+//  Created by Maxim on 7/19/19.
 //
 
-import UIKit
-
-//public protocol SUIViewModifier {
-//    associatedtype Content: UIView
-//    func modification(_ view: Content)
-//}
-
-//MARK: - Init
-public extension UIView {
-    
-    /// Initializes and returns a newly allocated view object with specified subviews added.
-    ///
-    /// The new view object must be inserted into the view hierarchy of a window before it can be used.
-    ///
-    /// - Parameter content: Closure, that specifies subviews to be added to the view hierarcy after initialization.
-    convenience init(content: () -> UIView) {
-        self.init()
-        place(content: content)
+public extension SUIKit {    
+    class ViewDSL: NSObject {
+        public var view: UIView
+        init(_ content: UIView) {
+            self.view = content
+        }
     }
-    
 }
 
 //MARK: - Other
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     /// Links the outer variable to the caller instance.
     ///
@@ -39,7 +26,7 @@ public extension UIView {
     /// - Returns: Caller instance.
     @discardableResult
     func link<T: UIView>(to ref: inout T?) -> Self {
-        modify{ if let self = $0 as? T { ref = self }}
+        modify{ if let view = $0 as? T { ref = view }}
     }
     
     /// Provides a closure with the caller instance as a parameter.
@@ -56,7 +43,7 @@ public extension UIView {
     /// - Returns: Caller instance.
     @discardableResult
     @objc func modify(_ modification: (UIView)->Void) -> Self {
-        modification(self)
+        modification(view)
         return self
     }
     
@@ -81,7 +68,7 @@ public extension UIView {
 }
 
 // MARK: - Colors
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     /// Sets the opacity of the caller instance by changing it's alpha value.
     ///
@@ -109,11 +96,11 @@ public extension UIView {
     func tint(color: UIColor) -> Self {
         modify { $0.tintColor = color }
     }
-
+    
 }
 
 // MARK: - Corners
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     /// Sets the corner radius of the view by masking specified corners.
     ///
@@ -139,7 +126,7 @@ public extension UIView {
 }
 
 // MARK: - Frame
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
     func frame(x: Int, y: Int, width: Int, height: Int) -> Self {
@@ -155,7 +142,7 @@ public extension UIView {
     func frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> Self {
         frame(.init(x: x, y: y, width: width, height: height))
     }
-
+    
     @discardableResult
     func frame(_ rect: CGRect) -> Self {
         modify { $0.frame = rect }
@@ -164,7 +151,7 @@ public extension UIView {
 }
 
 // MARK: - Bounds
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
     func bounds(x: Int, y: Int, width: Int, height: Int) -> Self {
@@ -189,7 +176,7 @@ public extension UIView {
 }
 
 // MARK: - Origin
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
     func origin(x: Int, y: Int) -> Self {
@@ -214,7 +201,7 @@ public extension UIView {
 }
 
 // MARK: - Size
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
     func size(width: Int, height: Int) -> Self {
@@ -239,7 +226,7 @@ public extension UIView {
 }
 
 // MARK: - Center
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
     func center(x: Int, y: Int) -> Self {
@@ -264,36 +251,66 @@ public extension UIView {
 }
 
 // MARK: - Gesture recognizers
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
-    func tapRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func tapRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UITapGestureRecognizer(target: target, action: action))
     }
     
     @discardableResult
-    func panRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func panRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UIPanGestureRecognizer(target: target, action: action))
     }
-
+    
     @discardableResult
-    func pressRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func pressRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UILongPressGestureRecognizer(target: target, action: action))
     }
     
     @discardableResult
-    func swipeRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func swipeRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UISwipeGestureRecognizer(target: target, action: action))
     }
     
     @discardableResult
-    func pinchRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func pinchRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UIPinchGestureRecognizer(target: target, action: action))
     }
     
     @discardableResult
-    func rotationRecognizer(target: Any? = self, action: Selector?) -> Self {
+    func rotationRecognizer(target: Any?, action: Selector?) -> Self {
         gestureRecognizer(UIRotationGestureRecognizer(target: target, action: action))
+    }
+    
+    @discardableResult
+    func tapRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UITapGestureRecognizer(target: view, action: action))
+    }
+    
+    @discardableResult
+    func panRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UIPanGestureRecognizer(target: view, action: action))
+    }
+    
+    @discardableResult
+    func pressRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UILongPressGestureRecognizer(target: view, action: action))
+    }
+    
+    @discardableResult
+    func swipeRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UISwipeGestureRecognizer(target: view, action: action))
+    }
+    
+    @discardableResult
+    func pinchRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UIPinchGestureRecognizer(target: view, action: action))
+    }
+    
+    @discardableResult
+    func rotationRecognizer(action: Selector?) -> Self {
+        gestureRecognizer(UIRotationGestureRecognizer(target: view, action: action))
     }
     
     @discardableResult
@@ -304,45 +321,45 @@ public extension UIView {
 }
 
 // MARK: - Subviews
-public extension UIView {
+public extension SUIKit.ViewDSL {
     
     @discardableResult
-    func place(content: ()->UIView) -> Self {
-        place(view: content())
+    func add(@SUIKit.UIViewBuilder content: SUIKit.UIViewBuilder.Block) -> Self {
+        add(view: content())
     }
     
     @discardableResult
-    func place(content: ()->UIView, at index: Int) -> Self {
-        place(view: content(), at: index)
+    func add(@SUIKit.UIViewBuilder content: SUIKit.UIViewBuilder.Block, at index: Int) -> Self {
+        add(view: content(), at: index)
     }
     
     @discardableResult
-    func place(content: ()->UIView, above subview: UIView) -> Self {
-        place(view: content(), above: subview)
+    func add(@SUIKit.UIViewBuilder content: SUIKit.UIViewBuilder.Block, above subview: UIView) -> Self {
+        add(view: content(), above: subview)
     }
     
     @discardableResult
-    func place(content: ()->UIView, below subview: UIView) -> Self {
-        place(view: content(), below: subview)
+    func add(@SUIKit.UIViewBuilder content: SUIKit.UIViewBuilder.Block, below subview: UIView) -> Self {
+        add(view: content(), below: subview)
     }
     
     @discardableResult
-    func place(view: UIView) -> Self {
+    func add(view: UIView) -> Self {
         modify { $0.addSubview(view) }
     }
     
     @discardableResult
-    func place(view: UIView, at index: Int) -> Self {
+    func add(view: UIView, at index: Int) -> Self {
         modify { $0.insertSubview(view, at: index) }
     }
     
     @discardableResult
-    func place(view: UIView, above subview: UIView) -> Self {
+    func add(view: UIView, above subview: UIView) -> Self {
         modify { $0.insertSubview(view, aboveSubview: subview) }
     }
     
     @discardableResult
-    func place(view: UIView, below subview: UIView) -> Self {
+    func add(view: UIView, below subview: UIView) -> Self {
         modify { $0.insertSubview(view, belowSubview: subview) }
     }
     
@@ -353,13 +370,13 @@ public extension UIView {
     
     @discardableResult
     func removeView(below view: UIView) -> Self {
-        guard let index = subviews.firstIndex(where: { $0 === view }) else { return self }
+        guard let index = view.subviews.firstIndex(where: { $0 === view }) else { return self }
         return removeView(at: index - 1)
     }
     
     @discardableResult
     func removeView(above view: UIView) -> Self {
-        guard let index = subviews.firstIndex(where: { $0 === view }) else { return self }
+        guard let index = view.subviews.firstIndex(where: { $0 === view }) else { return self }
         return removeView(at: index + 1)
     }
     
@@ -374,3 +391,4 @@ public extension UIView {
     }
     
 }
+

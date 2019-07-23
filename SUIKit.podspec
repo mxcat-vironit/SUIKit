@@ -8,12 +8,12 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SUIKit'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'Declarative UI framework'
 
   s.description      = <<-DESC
   Declarative UI framework, based on UIKit.
-  Keywords: UIKit, Foundation, SwiftUI, Interface, Declarative, UI, Swift, Cocoapods.
+  Keywords: UIKit, Foundation, SwiftUI, Interface, Declarative, UI, Swift, Cocoapods, Framework.
                        DESC
 
   s.homepage         = 'https://github.com/mx-Cat/SUIKit'
@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version = '5.1'
 
-  s.source_files = 'Sources/**/*'
+  s.source_files = 'Sources/**/**/**/*'
   s.frameworks = 'UIKit', 'Foundation'
 end

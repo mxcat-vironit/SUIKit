@@ -11,80 +11,51 @@ import SUIKit
 class ViewController: UIViewController {
     
     var label: UILabel?
-    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         setup()
-        //greetings()
     }
     
     func setup() {
-        var top = 200
-        ["Hello", "SUIKit", "What's", "Up?",
-         "––––––––––––––––––––––––––––––––",
-         "I'm", "fine", "thanx", "and you?",
-         "––––––––––––––––––––––––––––––––",
-         "Just awesome"].forEach { item in
-            view.place {
-                UILabel(text: item, alignment: .center, color: .red)
-                    .frame(x: 0, y: top, width: Int(view.frame.width), height: 40)
+        view.ui.add {
+            UIView {
+                UIView {
+                    UILabel(text: "1").ui
+                        .frame(x: 0, y: 44, width: CGRect.screen.width, height: 20)
+                        .link(to: &label)
+                        .view
+                    UILabel(text: "2").ui
+                        .frame(x: 44, y: 88, width: CGRect.screen.width, height: 20)
+                        .view
+                }
+                UILabel(text: "3").ui
+                    .frame(x: 88, y: 132, width: CGRect.screen.width, height: 20)
+                    .view
+                UILabel(text: "4").ui
+                    .frame(x: 132, y: 176, width: CGRect.screen.width, height: 20)
+                    .view
+                UILabel(text: "5").ui
+                    .frame(x: 176, y: 220, width: CGRect.screen.width, height: 20)
+                    .view
             }
-            top += 40
+            .ui
+            .size(width: CGRect.screen.width, height: 100)
+            .origin(x: 0, y: 0)
+            .background(color: .red)
+            .cornerRadius(18, corners: .bottom)
+            .view
+            UILabel(text: "6").ui
+                .frame(x: 220, y: 264, width: CGRect.screen.width, height: 20)
+                .view
+            UILabel(text: "7").ui
+                .frame(x: 264, y: 308, width: CGRect.screen.width, height: 20)
+                .view
+            UILabel(text: "8").ui
+                .frame(x: 308, y: 352, width: CGRect.screen.width, height: 20)
+                .view
         }
-        
-//        view.place {
-//            UIView {
-//                UIView()
-//                    .background(color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
-//                    .center(view.center)
-//                    .size(width: 240, height: 480)
-//                    .cornerRadius(48, corners: .excluding(.bottomLeft))
-//            }.place {
-//                UILabel(text: "Hello, SUIKit!", alignment: .center, color: .red)
-//                    .font(size: 24, .semibold)
-//                    .frame(view.frame)
-//                    .link(to: &label)
-//            }
-//            .frame(view.frame)
-//            .background(color: .black)
-//            .cornerRadius(view.frame.width / 2, corners: .tlbr)
-//        }
-//        .background(color: .red)
-    }
-    
-    func greetings() {
-        if counter < 10 { counter.isMultiple(of: 2) ? greetUser() : greetSUIKit() }
-    }
-    
-    func greetUser() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-            guard let self = self else { return }
-            self.counter += 1
-            self.label?.text("Hi, User!", color: .yellow)
-            self.view.background(color: .yellow)
-            self.greetings()
-        }
-    }
-    
-    func greetSUIKit() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-            guard let self = self else { return }
-            self.counter += 1
-            self.label?.text("Hello, SUIKit!", color: .red)
-            self.view.background(color: .red)
-            self.greetings()
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        .background(color: .yellow)
     }
     
 }

@@ -5,8 +5,6 @@
 //  Created by Maxim on 7/17/19.
 //
 
-import UIKit
-
 public extension CACornerMask {
     typealias Corners = Set<Corner>
     
